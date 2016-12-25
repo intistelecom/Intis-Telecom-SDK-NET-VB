@@ -52,7 +52,7 @@ Namespace Test
                     Dim currency = success.Currency
                 Else
                     Dim err = CType(one, MessageSendingError)
-                    Dim phone = one.Phone
+                    Dim phone = err.Phone
                     Dim errorCode = err.Code
                     Dim errorMessage = err.Message
                 End If

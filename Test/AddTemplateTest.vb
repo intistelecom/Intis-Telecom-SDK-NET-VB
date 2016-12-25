@@ -40,7 +40,7 @@ Namespace Test
             Dim connector As IApiConnector = New LocalApiConnector(getData())
             Dim client = New IntisClient(Login, ApiKey, ApiHost, connector)
             Dim template = client.AddTemplate("test", "this is test")
-            Assert.IsNotNull(client)
+            Assert.IsNotNull(template)
         End Sub
 
         <TestMethod>
