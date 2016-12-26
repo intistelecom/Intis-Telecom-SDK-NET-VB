@@ -1,4 +1,4 @@
-Intis-Telecom-SDK-NET
+Intis-Telecom-SDK-NET-VB
 =====================
 
 The Intis telecom gateway lets you send SMS messages worldwide via its API. This program sends HTTP(s) requests and receives information as a response in JSON and/or XML. The main functions of our API include:
