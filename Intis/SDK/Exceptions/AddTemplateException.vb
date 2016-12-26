@@ -32,11 +32,11 @@ Namespace Intis.SDK.Exceptions
         Public Sub New()
         End Sub
 
-        Public Sub New(ByVal parameters As NameValueCollection)
+        Public Sub New(parameters As NameValueCollection)
             MyClass.Parameters = parameters
         End Sub
 
-        Public Sub New(ByVal parameters As NameValueCollection, ByVal innerException As Exception)
+        Public Sub New(parameters As NameValueCollection, innerException As Exception)
             MyBase.New(innerException.Message)
 
             MyClass.Parameters = parameters

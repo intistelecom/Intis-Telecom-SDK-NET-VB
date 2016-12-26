@@ -30,7 +30,7 @@ Namespace Intis.SDK.Entity
 
         Const Undefined As Integer = 3
 
-        Function Parse(ByVal str As String) As Integer
+        Function Parse(str As String) As Integer
             Select Case str
                 Case "m"
                     Return Male

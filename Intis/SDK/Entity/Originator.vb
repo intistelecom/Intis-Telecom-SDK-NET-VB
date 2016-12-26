@@ -37,7 +37,7 @@ Namespace Intis.SDK.Entity
             End Get
         End Property
 
-        Public Sub New(ByVal originator As String, ByVal state As String)
+        Public Sub New(originator As String, state As String)
             Name = originator
             StateText = state
         End Sub

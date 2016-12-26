@@ -44,7 +44,7 @@ Namespace Intis.SDK.Entity
 
         Const Skipped As Integer = 9
 
-        Function Parse(ByVal state As String) As Integer?
+        Function Parse(state As String) As Integer?
             Select Case state
                 Case "deliver"
                     Return Delivered

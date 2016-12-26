@@ -36,7 +36,7 @@ Namespace Intis.SDK.Entity
 
         Public Property Template As String
 
-        Public Sub New(ByVal enabled As Integer, ByVal daysBefore As Integer, ByVal originator As String, ByVal timeToSend As String, ByVal useLocalTime As Integer, ByVal template As String)
+        Public Sub New(enabled As Integer, daysBefore As Integer, originator As String, timeToSend As String, useLocalTime As Integer, template As String)
             enabled = enabled
             daysBefore = daysBefore
             originator = originator

@@ -39,18 +39,18 @@ Namespace Intis.SDK
 
         Private ApiConnector As IApiConnector
 
-        Protected Sub New(ByVal apiConnector As IApiConnector)
+        Protected Sub New(apiConnector As IApiConnector)
             MyClass.ApiConnector = If(apiConnector, New HttpApiConnector())
         End Sub
 
-        Protected Function GetStreamContent(ByVal scriptName As String, ByVal parameters As NameValueCollection) As MemoryStream
+        Protected Function GetStreamContent(scriptName As String, parameters As NameValueCollection) As MemoryStream
             Dim result = GetContent(scriptName, parameters)
             Dim byteArray = Encoding.UTF8.GetBytes(result)
             Dim stream = New MemoryStream(byteArray)
             Return stream
         End Function
 
-        Protected Function GetContent(ByVal scriptName As String, ByVal parameters As NameValueCollection) As String
+        Protected Function GetContent(scriptName As String, parameters As NameValueCollection) As String
             Dim allParameters = GetParameters(parameters)
             Dim url = ApiHost & scriptName & ".php"
             Dim result = ApiConnector.GetContentFromApi(url, allParameters)
@@ -69,7 +69,7 @@ Namespace Intis.SDK
             Return parameters
         End Function
 
-        Private Function GetParameters(ByVal more As NameValueCollection) As NameValueCollection
+        Private Function GetParameters(more As NameValueCollection) As NameValueCollection
             Dim parameters = GetBaseParameters()
             If more.Count > 0 Then
                 For Each key In more.AllKeys
@@ -82,13 +82,13 @@ Namespace Intis.SDK
             Return parameters
         End Function
 
-        Private Function GetSignature(ByVal parameters As NameValueCollection) As String
+        Private Function GetSignature(parameters As NameValueCollection) As String
             Dim str = parameters.AllKeys.OrderBy(Function(k) k).Aggregate(String.Empty, Function(current, item) current & parameters(item))
             str = str & ApiKey
             Return GetMd5Hash(str)
         End Function
 
-        Private Shared Function GetMd5Hash(ByVal str As String) As String
+        Private Shared Function GetMd5Hash(str As String) As String
             Dim md5Hasher = MD5.Create()
             Dim data = md5Hasher.ComputeHash(Encoding.UTF8.GetBytes(str))
             Dim sBuilder = New StringBuilder()
@@ -99,7 +99,7 @@ Namespace Intis.SDK
             Return sBuilder.ToString()
         End Function
 
-        Private Sub checkException(ByVal result As String)
+        Private Sub checkException(result As String)
             If Not result.Any() Then
                 Throw New SdkException(0)
             End If

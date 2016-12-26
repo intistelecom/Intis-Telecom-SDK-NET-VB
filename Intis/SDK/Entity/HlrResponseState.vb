@@ -28,7 +28,7 @@ Namespace Intis.SDK.Entity
 
         Const Failed As Integer = 2
 
-        Function Parse(ByVal str As String) As Integer
+        Function Parse(str As String) As Integer
             Return If(str.ToLower() = "delivrd", Success, Failed)
         End Function
     End Module

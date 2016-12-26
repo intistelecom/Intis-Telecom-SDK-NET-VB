@@ -32,7 +32,7 @@ Namespace Intis.SDK
         Inherits AClient
         Implements IClient
 
-        Public Sub New(ByVal login As String, ByVal apiKey As String, ByVal apiHost As String)
+        Public Sub New(login As String, apiKey As String, apiHost As String)
             MyBase.New(Nothing)
 
             MyClass.Login = login
@@ -40,7 +40,7 @@ Namespace Intis.SDK
             MyClass.ApiHost = apiHost
         End Sub
 
-        Public Sub New(ByVal login As String, ByVal apiKey As String, ByVal apiHost As String, ByVal apiConnector As IApiConnector)
+        Public Sub New(login As String, apiKey As String, apiHost As String, apiConnector As IApiConnector)
             MyBase.New(apiConnector)
 
             MyClass.Login = login
@@ -95,7 +95,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function GetPhoneBaseItems(ByVal baseId As Integer, ByVal Optional page As Integer = 1) As List(Of PhoneBaseItem) Implements IClient.GetPhoneBaseItems
+        Public Function GetPhoneBaseItems(baseId As Integer, ByVal Optional page As Integer = 1) As List(Of PhoneBaseItem) Implements IClient.GetPhoneBaseItems
             Dim parameters = New NameValueCollection() From {{"base", baseId.ToString()}, {"page", page.ToString()}}
             Try
                 Dim content = GetStreamContent("phone", parameters)
@@ -116,7 +116,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function GetDeliveryStatus(ByVal messageId As String()) As List(Of DeliveryStatus) Implements IClient.GetDeliveryStatus
+        Public Function GetDeliveryStatus(messageId As String()) As List(Of DeliveryStatus) Implements IClient.GetDeliveryStatus
             Dim parameters = New NameValueCollection() From {{"state", String.Join(",", messageId)}}
             Try
                 Dim content = GetStreamContent("status", parameters)
@@ -137,7 +137,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function SendMessage(ByVal phone As Int64(), ByVal originator As String, ByVal text As String, ByVal Optional sendingTime As String = Nothing) As List(Of MessageSendingResult) Implements IClient.SendMessage
+        Public Function SendMessage(phone As Int64(), originator As String, text As String, ByVal Optional sendingTime As String = Nothing) As List(Of MessageSendingResult) Implements IClient.SendMessage
             Dim parameters = New NameValueCollection() From {{"phone", String.Join(",", phone.[Select](Function(p) p.ToString()))}, {"sender", originator}, {"text", text}}
             If sendingTime IsNot Nothing Then
                 parameters.Add("sendingTime", sendingTime)
@@ -168,7 +168,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function CheckStopList(ByVal phone As Int64) As StopList Implements IClient.CheckStopList
+        Public Function CheckStopList(phone As Int64) As StopList Implements IClient.CheckStopList
             Dim parameters = New NameValueCollection() From {{"phone", phone.ToString()}}
             Try
                 Dim content = GetStreamContent("find_on_stop", parameters)
@@ -185,7 +185,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function AddToStopList(ByVal phone As Int64) As Int64 Implements IClient.AddToStopList
+        Public Function AddToStopList(phone As Int64) As Int64 Implements IClient.AddToStopList
             Dim parameters = New NameValueCollection() From {{"phone", phone.ToString()}}
             Try
                 Dim content = GetContent("add2stop", parameters)
@@ -218,7 +218,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function AddTemplate(ByVal title As String, ByVal template As String) As Int64 Implements IClient.AddTemplate
+        Public Function AddTemplate(title As String, template As String) As Int64 Implements IClient.AddTemplate
             Dim parameters = New NameValueCollection() From {{"name", title}, {"text", template}}
             Try
                 Dim content = GetContent("add_template", parameters)
@@ -230,7 +230,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function EditTemplate(ByVal title As String, ByVal template As String) As Int64 Implements IClient.EditTemplate
+        Public Function EditTemplate(title As String, template As String) As Int64 Implements IClient.EditTemplate
             Dim parameters = New NameValueCollection() From {{"name", title}, {"text", template}, {"override", "1"}}
             Try
                 Dim content = GetContent("add_template", parameters)
@@ -242,7 +242,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function RemoveTemplate(ByVal name As String) As RemoveTemplateResponse Implements IClient.RemoveTemplate
+        Public Function RemoveTemplate(name As String) As RemoveTemplateResponse Implements IClient.RemoveTemplate
             Dim parameters = New NameValueCollection() From {{"name", name}}
             Try
                 Dim content = GetStreamContent("del_template", parameters)
@@ -254,7 +254,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function GetDailyStatsByMonth(ByVal year As Integer, ByVal month As Integer) As List(Of DailyStats) Implements IClient.GetDailyStatsByMonth
+        Public Function GetDailyStatsByMonth(year As Integer, month As Integer) As List(Of DailyStats) Implements IClient.GetDailyStatsByMonth
             Dim dt = New DateTime(year, month, 1, 0, 0, 0)
             Dim parameters = New NameValueCollection() From {{"month", dt.ToString("yyyy-MM")}}
             Try
@@ -268,7 +268,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function MakeHlrRequest(ByVal phone As Int64()) As List(Of HlrResponse) Implements IClient.MakeHlrRequest
+        Public Function MakeHlrRequest(phone As Int64()) As List(Of HlrResponse) Implements IClient.MakeHlrRequest
             Dim parameters = New NameValueCollection() From {{"phone", String.Join(",", phone.[Select](Function(p) p.ToString()))}}
             Try
                 Dim content = GetStreamContent("hlr", parameters)
@@ -281,7 +281,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function GetHlrStats(ByVal from As String, ByVal [to] As String) As List(Of HlrStatItem) Implements IClient.GetHlrStats
+        Public Function GetHlrStats(from As String, [to] As String) As List(Of HlrStatItem) Implements IClient.GetHlrStats
             Dim parameters = New NameValueCollection() From {{"from", from}, {"to", [to]}}
             Try
                 Dim content = GetStreamContent("hlr_stat", parameters)
@@ -297,7 +297,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function GetNetworkByPhone(ByVal phone As Int64) As Network Implements IClient.GetNetworkByPhone
+        Public Function GetNetworkByPhone(phone As Int64) As Network Implements IClient.GetNetworkByPhone
             Dim parameters = New NameValueCollection() From {{"phone", phone.ToString()}}
             Try
                 Dim content = GetStreamContent("operator", parameters)
@@ -309,7 +309,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function GetIncomingMessages(ByVal dt As String) As List(Of IncomingMessage) Implements IClient.GetIncomingMessages
+        Public Function GetIncomingMessages(dt As String) As List(Of IncomingMessage) Implements IClient.GetIncomingMessages
             Dim parameters = New NameValueCollection() From {{"date", dt}}
             Try
                 Dim list = SendQueryIncomingMessages(parameters)
@@ -319,7 +319,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Public Function GetIncomingMessages(ByVal from As String, ByVal [to] As String) As List(Of IncomingMessage) Implements IClient.GetIncomingMessages
+        Public Function GetIncomingMessages(from As String, [to] As String) As List(Of IncomingMessage) Implements IClient.GetIncomingMessages
             Dim parameters = New NameValueCollection() From {{"from", from}, {"to", [to]}}
             Try
                 Dim list = SendQueryIncomingMessages(parameters)
@@ -329,7 +329,7 @@ Namespace Intis.SDK
             End Try
         End Function
 
-        Private Function SendQueryIncomingMessages(ByVal parameters As NameValueCollection) As List(Of IncomingMessage)
+        Private Function SendQueryIncomingMessages(parameters As NameValueCollection) As List(Of IncomingMessage)
             Dim content = GetStreamContent("incoming", parameters)
             Dim settings = New DataContractJsonSerializerSettings With {.UseSimpleDictionaryFormat = True}
             Dim list = New List(Of IncomingMessage)()

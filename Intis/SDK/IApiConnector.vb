@@ -26,9 +26,9 @@ Namespace Intis.SDK
 
     Public Interface IApiConnector
 
-        Function GetContentFromApi(ByVal link As String, ByVal allParameters As NameValueCollection) As String
+        Function GetContentFromApi(link As String, allParameters As NameValueCollection) As String
 
-        Function GetTimestampFromApi(ByVal link As String) As String
+        Function GetTimestampFromApi(link As String) As String
 
     End Interface
 End Namespace
