@@ -22,15 +22,34 @@
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for successful message sending
+    ''' </summary>
     Public Class MessageSendingSuccess
         Inherits MessageSendingResult
 
+        ''' <summary>
+        ''' Message ID
+        ''' </summary>
+        ''' <returns></returns>
         Public Property MessageId As String
 
+        ''' <summary>
+        ''' Message price
+        ''' </summary>
+        ''' <returns></returns>
         Public Property Cost As Single
 
+        ''' <summary>
+        ''' Name of currency
+        ''' </summary>
+        ''' <returns></returns>
         Public Property Currency As String
 
+        ''' <summary>
+        ''' Number of message parts
+        ''' </summary>
+        ''' <returns></returns>
         Public Property MessagesCount As Integer
 
         Public Sub New()

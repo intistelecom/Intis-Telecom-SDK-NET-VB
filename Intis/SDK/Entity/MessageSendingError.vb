@@ -24,11 +24,22 @@ Imports Intis.SDK.Exceptions
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for the message sending result with error
+    ''' </summary>
     Public Class MessageSendingError
         Inherits MessageSendingResult
 
+        ''' <summary>
+        ''' Error code
+        ''' </summary>
+        ''' <returns></returns>
         Public Property Code As Integer
 
+        ''' <summary>
+        ''' Error description
+        ''' </summary>
+        ''' <returns></returns>
         Public ReadOnly Property Message As String
             Get
                 Return SdkException.GetMessage(Code)

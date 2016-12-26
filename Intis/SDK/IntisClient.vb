@@ -28,6 +28,10 @@ Imports System.Web.Script.Serialization
 
 Namespace Intis.SDK
 
+    ''' <summary>
+    ''' Class IntisClient
+    ''' The main class for SMS sending and getting API information
+    ''' </summary>
     Public Class IntisClient
         Inherits AClient
         Implements IClient
@@ -48,6 +52,10 @@ Namespace Intis.SDK
             MyClass.ApiHost = apiHost
         End Sub
 
+        ''' <summary>
+        ''' Get balance
+        ''' </summary>
+        ''' <returns>Balance</returns>
         Public Function GetBalance() As Balance Implements IClient.GetBalance
             Dim parameters = New NameValueCollection()
             Try
@@ -60,6 +68,10 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Getting all user lists
+        ''' </summary>
+        ''' <returns>list of phone base</returns>
         Public Function GetPhoneBases() As List(Of PhoneBase) Implements IClient.GetPhoneBases
             Dim parameters = New NameValueCollection()
             Try
@@ -81,6 +93,10 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Getting all user sender names
+        ''' </summary>
+        ''' <returns>List of senders with its statuses</returns>
         Public Function GetOriginators() As List(Of Originator) Implements IClient.GetOriginators
             Dim parameters = New NameValueCollection()
             Try
@@ -95,6 +111,12 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Getting subscribers of list
+        ''' </summary>
+        ''' <param name="baseId">List ID</param>
+        ''' <param name="page">Page of list</param>
+        ''' <returns>List subscribers</returns>
         Public Function GetPhoneBaseItems(baseId As Integer, ByVal Optional page As Integer = 1) As List(Of PhoneBaseItem) Implements IClient.GetPhoneBaseItems
             Dim parameters = New NameValueCollection() From {{"base", baseId.ToString()}, {"page", page.ToString()}}
             Try
@@ -116,6 +138,11 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Getting message status
+        ''' </summary>
+        ''' <param name="messageId">Message ID</param>
+        ''' <returns>List of message status</returns>
         Public Function GetDeliveryStatus(messageId As String()) As List(Of DeliveryStatus) Implements IClient.GetDeliveryStatus
             Dim parameters = New NameValueCollection() From {{"state", String.Join(",", messageId)}}
             Try
@@ -137,6 +164,14 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' SMS sending
+        ''' </summary>
+        ''' <param name="phone">Phone number</param>
+        ''' <param name="originator">Sender name (one of the approved in your account)</param>
+        ''' <param name="text">SMS text</param>
+        ''' <param name="sendingTime">An optional parameter, it is used when it is necessary to schedule SMS messages. Format YYYY-MM-DD HH:ii</param>
+        ''' <returns>Results list</returns>
         Public Function SendMessage(phone As Int64(), originator As String, text As String, ByVal Optional sendingTime As String = Nothing) As List(Of MessageSendingResult) Implements IClient.SendMessage
             Dim parameters = New NameValueCollection() From {{"phone", String.Join(",", phone.[Select](Function(p) p.ToString()))}, {"sender", originator}, {"text", text}}
             If sendingTime IsNot Nothing Then
@@ -168,6 +203,11 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Testing phone number for stop list
+        ''' </summary>
+        ''' <param name="phone">Phone number</param>
+        ''' <returns>Stop list</returns>
         Public Function CheckStopList(phone As Int64) As StopList Implements IClient.CheckStopList
             Dim parameters = New NameValueCollection() From {{"phone", phone.ToString()}}
             Try
@@ -185,6 +225,11 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Adding number to stop list
+        ''' </summary>
+        ''' <param name="phone">Phone number</param>
+        ''' <returns>ID in stop list</returns>
         Public Function AddToStopList(phone As Int64) As Int64 Implements IClient.AddToStopList
             Dim parameters = New NameValueCollection() From {{"phone", phone.ToString()}}
             Try
@@ -197,6 +242,10 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Getting user templates
+        ''' </summary>
+        ''' <returns>List of templates</returns>
         Public Function GetTemplates() As List(Of Template) Implements IClient.GetTemplates
             Dim parameters = New NameValueCollection()
             Try
@@ -218,6 +267,12 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Adding user template
+        ''' </summary>
+        ''' <param name="title">Template name</param>
+        ''' <param name="template">Text of template</param>
+        ''' <returns>ID in the template list</returns>
         Public Function AddTemplate(title As String, template As String) As Int64 Implements IClient.AddTemplate
             Dim parameters = New NameValueCollection() From {{"name", title}, {"text", template}}
             Try
@@ -230,6 +285,12 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Edit user template
+        ''' </summary>
+        ''' <param name="title">Template name</param>
+        ''' <param name="template">Text of template</param>
+        ''' <returns>ID in the template list</returns>
         Public Function EditTemplate(title As String, template As String) As Int64 Implements IClient.EditTemplate
             Dim parameters = New NameValueCollection() From {{"name", title}, {"text", template}, {"override", "1"}}
             Try
@@ -242,6 +303,11 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Remove user template
+        ''' </summary>
+        ''' <param name="name">Template name</param>
+        ''' <returns>Result</returns>
         Public Function RemoveTemplate(name As String) As RemoveTemplateResponse Implements IClient.RemoveTemplate
             Dim parameters = New NameValueCollection() From {{"name", name}}
             Try
@@ -254,6 +320,12 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Getting statistics for the certain month
+        ''' </summary>
+        ''' <param name="year">Year</param>
+        ''' <param name="month">Month</param>
+        ''' <returns>Statistics</returns>
         Public Function GetDailyStatsByMonth(year As Integer, month As Integer) As List(Of DailyStats) Implements IClient.GetDailyStatsByMonth
             Dim dt = New DateTime(year, month, 1, 0, 0, 0)
             Dim parameters = New NameValueCollection() From {{"month", dt.ToString("yyyy-MM")}}
@@ -268,6 +340,11 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Sending HLR request for number
+        ''' </summary>
+        ''' <param name="phone">Phone number</param>
+        ''' <returns>Results list</returns>
         Public Function MakeHlrRequest(phone As Int64()) As List(Of HlrResponse) Implements IClient.MakeHlrRequest
             Dim parameters = New NameValueCollection() From {{"phone", String.Join(",", phone.[Select](Function(p) p.ToString()))}}
             Try
@@ -281,6 +358,12 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Getting statuses of HLR request
+        ''' </summary>
+        ''' <param name="from">Initial date in the format YYYY-MM-DD</param>
+        ''' <param name="to">Final date in the format YYYY-MM-DD</param>
+        ''' <returns>statuses</returns>
         Public Function GetHlrStats(from As String, [to] As String) As List(Of HlrStatItem) Implements IClient.GetHlrStats
             Dim parameters = New NameValueCollection() From {{"from", from}, {"to", [to]}}
             Try
@@ -297,6 +380,11 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Getting the operator of subscriber phone number
+        ''' </summary>
+        ''' <param name="phone">Phone number</param>
+        ''' <returns>Operator</returns>
         Public Function GetNetworkByPhone(phone As Int64) As Network Implements IClient.GetNetworkByPhone
             Dim parameters = New NameValueCollection() From {{"phone", phone.ToString()}}
             Try
@@ -309,6 +397,11 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Getting incoming messages of certain date
+        ''' </summary>
+        ''' <param name="dt">Date in the format YYYY-MM-DD</param>
+        ''' <returns>List of incoming messages</returns>
         Public Function GetIncomingMessages(dt As String) As List(Of IncomingMessage) Implements IClient.GetIncomingMessages
             Dim parameters = New NameValueCollection() From {{"date", dt}}
             Try
@@ -319,6 +412,12 @@ Namespace Intis.SDK
             End Try
         End Function
 
+        ''' <summary>
+        ''' Getting incoming messages for the period
+        ''' </summary>
+        ''' <param name="from">Initial date in the format YYYY-MM-DD HH:II:SS</param>
+        ''' <param name="to">Finel date in the format YYYY-MM-DD HH:II:SS</param>
+        ''' <returns>List of incoming messages</returns>
         Public Function GetIncomingMessages(from As String, [to] As String) As List(Of IncomingMessage) Implements IClient.GetIncomingMessages
             Dim parameters = New NameValueCollection() From {{"from", from}, {"to", [to]}}
             Try

@@ -22,6 +22,9 @@
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class of analysis of message status
+    ''' </summary>
     Module MessageState
 
         Const Scheduled As Integer = 0
@@ -44,6 +47,11 @@ Namespace Intis.SDK.Entity
 
         Const Skipped As Integer = 9
 
+        ''' <summary>
+        ''' Parse string to message state constant
+        ''' </summary>
+        ''' <param name="state">String presentation of message status</param>
+        ''' <returns></returns>
         Function Parse(state As String) As Integer?
             Select Case state
                 Case "deliver"

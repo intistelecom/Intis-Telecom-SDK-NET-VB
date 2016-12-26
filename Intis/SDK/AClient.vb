@@ -29,6 +29,10 @@ Imports Intis.SDK.Exceptions
 
 Namespace Intis.SDK
 
+    ''' <summary>
+    ''' Class AClient
+    ''' The main class for working with API
+    ''' </summary>
     Public MustInherit Class AClient
 
         Protected Login As String
@@ -43,6 +47,12 @@ Namespace Intis.SDK
             MyClass.ApiConnector = If(apiConnector, New HttpApiConnector())
         End Sub
 
+        ''' <summary>
+        ''' Getting content using parameters and name of API script
+        ''' </summary>
+        ''' <param name="scriptName">Name of API script</param>
+        ''' <param name="parameters">parameters</param>
+        ''' <returns></returns>
         Protected Function GetStreamContent(scriptName As String, parameters As NameValueCollection) As MemoryStream
             Dim result = GetContent(scriptName, parameters)
             Dim byteArray = Encoding.UTF8.GetBytes(result)
@@ -50,6 +60,12 @@ Namespace Intis.SDK
             Return stream
         End Function
 
+        ''' <summary>
+        ''' Getting content using parameters and name of API script
+        ''' </summary>
+        ''' <param name="scriptName">Name of API script</param>
+        ''' <param name="parameters">parameters</param>
+        ''' <returns>returns the data as an string</returns>
         Protected Function GetContent(scriptName As String, parameters As NameValueCollection) As String
             Dim allParameters = GetParameters(parameters)
             Dim url = ApiHost & scriptName & ".php"
@@ -58,6 +74,10 @@ Namespace Intis.SDK
             Return result
         End Function
 
+        ''' <summary>
+        ''' Getting time in UNIX format according api
+        ''' </summary>
+        ''' <returns>timestamp as an string</returns>
         Private Function GetTimestamp() As String
             Dim unixTimestamp = CInt((System.DateTime.UtcNow.Subtract(New System.DateTime(1970, 1, 1))).TotalSeconds)
             Dim timestamp = unixTimestamp.ToString()
@@ -69,6 +89,12 @@ Namespace Intis.SDK
             Return parameters
         End Function
 
+        ''' <summary>
+        ''' Getting additional parameters for API.
+        ''' It creates an array with additional parameters and complements an array with a signature key.
+        ''' </summary>
+        ''' <param name="more">additional parameters</param>
+        ''' <returns>base + additional</returns>
         Private Function GetParameters(more As NameValueCollection) As NameValueCollection
             Dim parameters = GetBaseParameters()
             If more.Count > 0 Then
@@ -82,12 +108,22 @@ Namespace Intis.SDK
             Return parameters
         End Function
 
+        ''' <summary>
+        ''' Creating signatures by incoming parameters
+        ''' </summary>
+        ''' <param name="parameters">all parameters</param>
+        ''' <returns>signature</returns>
         Private Function GetSignature(parameters As NameValueCollection) As String
             Dim str = parameters.AllKeys.OrderBy(Function(k) k).Aggregate(String.Empty, Function(current, item) current & parameters(item))
             str = str & ApiKey
             Return GetMd5Hash(str)
         End Function
 
+        ''' <summary>
+        ''' Generating Hash from String
+        ''' </summary>
+        ''' <param name="str">line of parameters</param>
+        ''' <returns>hash</returns>
         Private Shared Function GetMd5Hash(str As String) As String
             Dim md5Hasher = MD5.Create()
             Dim data = md5Hasher.ComputeHash(Encoding.UTF8.GetBytes(str))
@@ -99,6 +135,10 @@ Namespace Intis.SDK
             Return sBuilder.ToString()
         End Function
 
+        ''' <summary>
+        ''' Testing for special exceptions and error output
+        ''' </summary>
+        ''' <param name="result">data as an string</param>
         Private Sub checkException(result As String)
             If Not result.Any() Then
                 Throw New SdkException(0)

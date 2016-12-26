@@ -24,10 +24,25 @@ Imports System.Collections.Specialized
 
 Namespace Intis.SDK
 
+    ''' <summary>
+    ''' Interface IApiConnector
+    ''' data connector interface
+    ''' </summary>
     Public Interface IApiConnector
 
+        ''' <summary>
+        ''' Getting data from API.
+        ''' </summary>
+        ''' <param name="link">API method URL</param>
+        ''' <param name="allParameters">parameters</param>
+        ''' <returns>data as an string</returns>
         Function GetContentFromApi(link As String, allParameters As NameValueCollection) As String
 
+        ''' <summary>
+        ''' Getting timestamp from API
+        ''' </summary>
+        ''' <param name="link">API address</param>
+        ''' <returns>timestamp as an string</returns>
         Function GetTimestampFromApi(link As String) As String
 
     End Interface

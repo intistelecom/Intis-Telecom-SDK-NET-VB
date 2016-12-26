@@ -24,17 +24,36 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for getting user templates
+    ''' </summary>
     <DataContract>
     Public Class Template
 
+        ''' <summary>
+        ''' Template ID
+        ''' </summary>
+        ''' <returns></returns>
         Public Property Id As Int64
 
+        ''' <summary>
+        ''' Template name
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="name")>
         Public Property Title As String
 
+        ''' <summary>
+        ''' Text of template
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="template")>
         Public Property template As String
 
+        ''' <summary>
+        ''' Time of template creating
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="up_time")>
         Public Property CreatedAt As String
     End Class

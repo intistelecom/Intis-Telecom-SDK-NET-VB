@@ -24,12 +24,24 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class DailyStats
+    ''' Class for getting daily statistics
+    ''' </summary>
     <DataContract>
     Public Class DailyStats
 
+        ''' <summary>
+        ''' day for statistics output
+        ''' </summary>
+        ''' <returns>string</returns>
         <DataMember(Name:="date")>
         Public Property Day As String
 
+        ''' <summary>
+        ''' variable for storing statistics
+        ''' </summary>
+        ''' <returns>stats list</returns>
         <DataMember(Name:="stats")>
         Public Property Stats As List(Of Stats)
     End Class

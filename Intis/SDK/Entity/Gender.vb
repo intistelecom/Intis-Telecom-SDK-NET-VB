@@ -22,6 +22,9 @@
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Subscriber gender
+    ''' </summary>
     Module Gender
 
         Const Male As Integer = 1
@@ -30,6 +33,11 @@ Namespace Intis.SDK.Entity
 
         Const Undefined As Integer = 3
 
+        ''' <summary>
+        ''' Parsing a string for getting gender of subscriber
+        ''' </summary>
+        ''' <param name="str">String representation of subscriber gender</param>
+        ''' <returns>integer</returns>
         Function Parse(str As String) As Integer
             Select Case str
                 Case "m"

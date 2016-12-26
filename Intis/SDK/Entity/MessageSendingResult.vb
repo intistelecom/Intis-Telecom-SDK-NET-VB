@@ -22,10 +22,21 @@
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class of getting response to SMS sending
+    ''' </summary>
     Public Class MessageSendingResult
 
+        ''' <summary>
+        ''' Phone number
+        ''' </summary>
+        ''' <returns></returns>
         Public Property Phone As Int64
 
+        ''' <summary>
+        ''' Is success result
+        ''' </summary>
+        ''' <returns></returns>
         Public Property IsOk As Boolean
     End Class
 End Namespace

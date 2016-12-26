@@ -22,14 +22,31 @@
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for analysis sender status
+    ''' </summary>
     Module OriginatorState
 
+        ''' <summary>
+        ''' Constant for approved sender
+        ''' </summary>
         Const Completed As Integer = 1
 
+        ''' <summary>
+        ''' Constant for sender in moderation queue
+        ''' </summary>
         Const Moderation As Integer = 2
 
+        ''' <summary>
+        ''' Constant for rejected sender
+        ''' </summary>
         Const Rejected As Integer = 3
 
+        ''' <summary>
+        ''' Parse string to OriginatorState constants 
+        ''' </summary>
+        ''' <param name="str">String presentation of sender status</param>
+        ''' <returns></returns>
         Function Parse(str As String) As Integer?
             Select Case str
                 Case "completed"

@@ -24,13 +24,24 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for getting sender status
+    ''' </summary>
     <DataContract>
     Public Class Originator
 
+        ''' <summary>
+        ''' Sender name
+        ''' </summary>
+        ''' <returns></returns>
         Public Property Name As String
 
         Private Property StateText As String
 
+        ''' <summary>
+        ''' Sender status
+        ''' </summary>
+        ''' <returns></returns>
         Public ReadOnly Property State As Integer?
             Get
                 Return OriginatorState.Parse(StateText)

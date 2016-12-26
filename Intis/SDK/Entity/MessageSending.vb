@@ -24,23 +24,50 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' SMS sending response
+    ''' </summary>
     <DataContract>
     Class MessageSending
 
+        ''' <summary>
+        ''' Phone number
+        ''' </summary>
+        ''' <returns></returns>
         Public Property Phone As Int64
 
+        ''' <summary>
+        ''' Message ID
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="id_sms")>
         Public Property MessageId As String
 
+        ''' <summary>
+        ''' Message price
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="cost")>
         Public Property Cost As Single
 
+        ''' <summary>
+        ''' Name of currency
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="currency")>
         Public Property Currency As String
 
+        ''' <summary>
+        ''' Number of message parts
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="count_sms")>
         Public Property MessagesCount As Integer
 
+        ''' <summary>
+        ''' Error text in SMS sending
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="error")>
         Public Property [Error] As Integer
     End Class

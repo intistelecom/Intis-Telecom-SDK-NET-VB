@@ -22,12 +22,20 @@
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for analysis of status of subscriber by HLR request
+    ''' </summary>
     Module HlrResponseState
 
         Const Success As Integer = 1
 
         Const Failed As Integer = 2
 
+        ''' <summary>
+        ''' Analysis of the string of status by HLR request
+        ''' </summary>
+        ''' <param name="str">String representation of status</param>
+        ''' <returns>integer</returns>
         Function Parse(str As String) As Integer
             Return If(str.ToLower() = "delivrd", Success, Failed)
         End Function

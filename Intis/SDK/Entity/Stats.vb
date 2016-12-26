@@ -24,23 +24,42 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for getting statistics
+    ''' </summary>
     <DataContract>
     Public Class Stats
 
         Private Property StateText As String
 
+        ''' <summary>
+        ''' Status of message
+        ''' </summary>
+        ''' <returns></returns>
         Public ReadOnly Property State As Integer?
             Get
                 Return MessageState.Parse(StateText)
             End Get
         End Property
 
+        ''' <summary>
+        ''' Price for message
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="cost")>
         Public Property Cost As Single
 
+        ''' <summary>
+        ''' Name of currency
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="currency")>
         Public Property Currency As String
 
+        ''' <summary>
+        ''' Number of message parts
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="parts")>
         Public Property Count As Integer
     End Class

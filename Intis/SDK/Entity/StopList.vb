@@ -24,14 +24,29 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for testing number for stop list
+    ''' </summary>
     <DataContract>
     Public Class StopList
 
+        ''' <summary>
+        ''' Stop list ID
+        ''' </summary>
+        ''' <returns></returns>
         Public Property Id As Int64
 
+        ''' <summary>
+        ''' Time of adding to stop list
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="time_in")>
         Public Property TimeAddedAt As String
 
+        ''' <summary>
+        ''' Reason of adding to stop list
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="description")>
         Public Property Description As String
     End Class

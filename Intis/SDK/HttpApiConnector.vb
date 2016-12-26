@@ -27,9 +27,19 @@ Imports System.Web
 
 Namespace Intis.SDK
 
+    ''' <summary>
+    ''' Class HttpApiConnector
+    ''' HTTP API data connector implementation API data connector
+    ''' </summary>
     Public Class HttpApiConnector
         Implements IApiConnector
 
+        ''' <summary>
+        ''' Getting data from API
+        ''' </summary>
+        ''' <param name="url">API address</param>
+        ''' <param name="allParameters">parameters</param>
+        ''' <returns>data as an string</returns>
         Public Function GetContentFromApi(url As String, allParameters As NameValueCollection) As String Implements IApiConnector.GetContentFromApi
             Dim encodeParameters = New NameValueCollection()
             For i = 0 To allParameters.Count - 1
@@ -42,6 +52,11 @@ Namespace Intis.SDK
             Return result
         End Function
 
+        ''' <summary>
+        ''' Getting timestamp from API
+        ''' </summary>
+        ''' <param name="url">API address</param>
+        ''' <returns>timestamp as an string</returns>
         Public Function GetTimestampFromApi(url As String) As String Implements IApiConnector.GetTimestampFromApi
             Dim client = New WebClient With {.Encoding = Encoding.UTF8}
             Dim result = client.DownloadString(url)

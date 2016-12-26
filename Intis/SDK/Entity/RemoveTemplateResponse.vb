@@ -24,9 +24,16 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for remove template
+    ''' </summary>
     <DataContract>
     Public Class RemoveTemplateResponse
 
+        ''' <summary>
+        ''' Operator name
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="result")>
         Public Property Result As String
     End Class

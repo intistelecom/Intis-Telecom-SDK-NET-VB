@@ -24,35 +24,70 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class of getting subscriber data in list
+    ''' </summary>
     <DataContract>
     Public Class PhoneBaseItem
 
+        ''' <summary>
+        ''' Phone number of subscriber
+        ''' </summary>
+        ''' <returns></returns>
         Public Property Phone As Int64
 
+        ''' <summary>
+        ''' Subscriber first name
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="name")>
         Public Property FirstName As String
 
+        ''' <summary>
+        ''' Subscriber middle name
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="middle_name")>
         Public Property MiddleName As String
 
+        ''' <summary>
+        ''' Subscriber last name
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="last_name")>
         Public Property LastName As String
 
+        ''' <summary>
+        ''' Subscriber birth date
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="date_birth")>
         Public Property BirthDay As String
 
         <DataMember(Name:="male")>
         Private Property GenderString As String
 
+        ''' <summary>
+        ''' Gender of subscriber
+        ''' </summary>
+        ''' <returns></returns>
         Public ReadOnly Property Gender As Integer
             Get
                 Return Entity.Gender.Parse(GenderString)
             End Get
         End Property
 
+        ''' <summary>
+        ''' Region of subscriber
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="region")>
         Public Property Area As String
 
+        ''' <summary>
+        ''' Operator of subscriber
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="operator")>
         Public Property Network As String
 

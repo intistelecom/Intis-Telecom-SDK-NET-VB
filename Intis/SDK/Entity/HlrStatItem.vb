@@ -24,19 +24,38 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class of statistics by HLR requests
+    ''' </summary>
     <DataContract>
     Public Class HlrStatItem
         Inherits HlrResponse
 
+        ''' <summary>
+        ''' Message ID
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="message_id")>
         Public Property MessageId As String
 
+        ''' <summary>
+        ''' Final price
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="total_price")>
         Public Property TotalPrice As Single
 
+        ''' <summary>
+        ''' Request ID
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="request_id")>
         Public Property RequestId As String
 
+        ''' <summary>
+        ''' Time of HLR request
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="request_time")>
         Public Property RequestTime As String
     End Class

@@ -24,36 +24,79 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for getting operator of subscriber
+    ''' </summary>
     <DataContract>
     Public Class Network
 
+        ''' <summary>
+        ''' Operator name
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="operator")>
         Public Property Title As String
 
+        ''' <summary>
+        ''' Currency
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="currency")>
         Private Property Currency As String
 
+        ''' <summary>
+        ''' Error
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="error")>
         Private Property [Error] As Integer
 
+        ''' <summary>
+        ''' MCC of subscriber
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="mcc")>
         Private Property Mcc As String
 
+        ''' <summary>
+        ''' MNC of subscriber
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="mnc")>
         Private Property Mnc As String
 
+        ''' <summary>
+        ''' Phone 
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="phone")>
         Private Property Phone As String
 
+        ''' <summary>
+        ''' Ported
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="ported")>
         Private Property Ported As String
 
+        ''' <summary>
+        ''' Price
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="price")>
         Private Property Price As String
 
+        ''' <summary>
+        ''' Region code
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="regionCode")>
         Private Property RegionCode As Integer
 
+        ''' <summary>
+        ''' Time zone
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="timeZone")>
         Private Property TimeZone As Integer
     End Class

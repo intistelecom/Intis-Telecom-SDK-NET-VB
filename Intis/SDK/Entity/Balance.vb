@@ -24,12 +24,24 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class Balance
+    ''' Class of getting balance
+    ''' </summary>
     <DataContract>
     Public Class Balance
 
+        ''' <summary>
+        ''' Amount of money
+        ''' </summary>
+        ''' <returns>float</returns>
         <DataMember(Name:="money")>
         Public Property Amount As String
 
+        ''' <summary>
+        ''' Name of currency
+        ''' </summary>
+        ''' <returns>string</returns>
         <DataMember(Name:="currency")>
         Public Property Currency As String
     End Class

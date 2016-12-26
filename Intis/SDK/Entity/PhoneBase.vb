@@ -24,17 +24,36 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for getting data of phone number list
+    ''' </summary>
     <DataContract>
     Public Class PhoneBase
 
+        ''' <summary>
+        ''' List ID
+        ''' </summary>
+        ''' <returns></returns>
         Public Property BaseId As Int64
 
+        ''' <summary>
+        ''' Name of list
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="name")>
         Public Property Title As String
 
+        ''' <summary>
+        ''' Number of contacts in list
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="count")>
         Public Property Count As Integer
 
+        ''' <summary>
+        ''' Number of pages in list
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="pages")>
         Public Property Pages As Integer
 
@@ -56,6 +75,10 @@ Namespace Intis.SDK.Entity
         <DataMember(Name:="birth_text")>
         Private Property Template As String
 
+        ''' <summary>
+        ''' Settings of birthday greeting for the list contacts
+        ''' </summary>
+        ''' <returns></returns>
         Public ReadOnly Property BirthdayGreetingSettings As BirthdayGreetingSettings
             Get
                 Return New BirthdayGreetingSettings(Enabled, DaysBefore, Originator, TimeToSend, UseLocalTime, Template)

@@ -24,23 +24,50 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for getting incoming message
+    ''' </summary>
     <DataContract>
     Public Class IncomingMessage
 
+        ''' <summary>
+        ''' Message ID
+        ''' </summary>
+        ''' <returns></returns>
         Public Property MessageId As String
 
+        ''' <summary>
+        ''' Date of message receipt
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="date")>
         Public Property ReceivedAt As String
 
+        ''' <summary>
+        ''' Sender name
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="sender")>
         Public Property Originator As String
 
+        ''' <summary>
+        ''' Prefix of incoming message
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="prefix")>
         Public Property Prefix As String
 
+        ''' <summary>
+        ''' SMS text
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="text")>
         Public Property Text As String
 
+        ''' <summary>
+        ''' Message destination
+        ''' </summary>
+        ''' <returns></returns>
         <DataMember(Name:="phone")>
         Public Property Destination As String
     End Class

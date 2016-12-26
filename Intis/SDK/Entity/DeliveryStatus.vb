@@ -24,14 +24,29 @@ Imports System.Runtime.Serialization
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class for getting message statuses
+    ''' </summary>
     <DataContract>
     Public Class DeliveryStatus
 
+        ''' <summary>
+        ''' Message ID
+        ''' </summary>
+        ''' <returns>string</returns>
         Public Property MessageId As String
 
+        ''' <summary>
+        ''' Status of message
+        ''' </summary>
+        ''' <returns>integer</returns>
         <DataMember(Name:="status")>
         Public Property MessageStatus As String
 
+        ''' <summary>
+        ''' Time of message
+        ''' </summary>
+        ''' <returns>string</returns>
         <DataMember(Name:="time")>
         Public Property CreatedAt As String
     End Class

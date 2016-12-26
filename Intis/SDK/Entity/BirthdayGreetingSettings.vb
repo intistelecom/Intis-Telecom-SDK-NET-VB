@@ -22,27 +22,55 @@
 
 Namespace Intis.SDK.Entity
 
+    ''' <summary>
+    ''' Class BirthdayGreetingSettings
+    ''' Getting settings of birthday greetings
+    ''' </summary>
     Public Class BirthdayGreetingSettings
 
+        ''' <summary>
+        ''' key that is responsible for sending birthday greeting
+        ''' </summary>
+        ''' <returns>integer</returns>
         Public Property Enabled As Integer
 
+        ''' <summary>
+        ''' number of days to send greetings before
+        ''' </summary>
+        ''' <returns>integer</returns>
         Public Property DaysBefore As Integer
 
+        ''' <summary>
+        ''' sender name of greeting SMS
+        ''' </summary>
+        ''' <returns>string</returns>
         Public Property Originator As String
 
+        ''' <summary>
+        ''' time for sending greetings
+        ''' </summary>
+        ''' <returns>string</returns>
         Public Property TimeToSend As String
 
+        ''' <summary>
+        ''' use local time of subscriber while SMS sending
+        ''' </summary>
+        ''' <returns>integer</returns>
         Public Property UseLocalTime As Integer
 
+        ''' <summary>
+        ''' text template for sending greetings
+        ''' </summary>
+        ''' <returns>string</returns>
         Public Property Template As String
 
         Public Sub New(enabled As Integer, daysBefore As Integer, originator As String, timeToSend As String, useLocalTime As Integer, template As String)
-            enabled = enabled
-            daysBefore = daysBefore
-            originator = originator
-            timeToSend = timeToSend
-            useLocalTime = useLocalTime
-            template = template
+            MyClass.Enabled = enabled
+            MyClass.DaysBefore = daysBefore
+            MyClass.Originator = originator
+            MyClass.TimeToSend = timeToSend
+            MyClass.UseLocalTime = useLocalTime
+            MyClass.Template = template
         End Sub
     End Class
 End Namespace
