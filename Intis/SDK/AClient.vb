@@ -40,7 +40,7 @@ Namespace Intis.SDK
         Private ApiConnector As IApiConnector
 
         Protected Sub New(ByVal apiConnector As IApiConnector)
-            apiConnector = If(apiConnector, New HttpApiConnector())
+            MyClass.ApiConnector = If(apiConnector, New HttpApiConnector())
         End Sub
 
         Protected Function GetStreamContent(ByVal scriptName As String, ByVal parameters As NameValueCollection) As MemoryStream

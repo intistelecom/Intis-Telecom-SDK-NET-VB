@@ -35,17 +35,17 @@ Namespace Intis.SDK
         Public Sub New(ByVal login As String, ByVal apiKey As String, ByVal apiHost As String)
             MyBase.New(Nothing)
 
-            login = login
-            apiKey = apiKey
-            apiHost = apiHost
+            MyClass.Login = login
+            MyClass.ApiKey = apiKey
+            MyClass.ApiHost = apiHost
         End Sub
 
         Public Sub New(ByVal login As String, ByVal apiKey As String, ByVal apiHost As String, ByVal apiConnector As IApiConnector)
-            MyBase.New(Nothing)
+            MyBase.New(apiConnector)
 
-            login = login
-            apiKey = apiKey
-            apiHost = apiHost
+            MyClass.Login = login
+            MyClass.ApiKey = apiKey
+            MyClass.ApiHost = apiHost
         End Sub
 
         Public Function GetBalance() As Balance Implements IClient.GetBalance
